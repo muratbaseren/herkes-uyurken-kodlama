@@ -1,0 +1,54 @@
+﻿@model EditUserModel
+@{
+    ViewData["Title"] = "Edit User";
+}
+
+
+<div class="row">
+    <div class="col-4 offset-4">
+        <h1 class="display-4 border-bottom text-center pb-2">@ViewData["Title"]</h1>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-4 offset-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger small"></div>
+
+            <div class="form-group mb-3">
+                <label asp-for="FullName" class="form-label">Full Name</label>
+                <input asp-for="FullName" class="form-control" placeholder="john doe" />
+                <span asp-validation-for="FullName" class="text-danger small"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="Username" class="form-label">Username</label>
+                <input asp-for="Username" class="form-control" placeholder="johndoe" />
+                <span asp-validation-for="Username" class="text-danger small"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="Role" class="form-label">Role</label>
+                <select asp-for="Role" class="form-select">
+                    <option value="">Please Select</option>
+                    <option value="admin">Admin</option>
+                    <option value="user">User</option>
+                </select>
+                <span asp-validation-for="Role" class="text-danger small"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" asp-for="Locked">
+                    <label class="form-check-label" asp-for="Locked">
+                        Locked
+                    </label>
+                </div>
+            </div>
+            
+            <div class="form-group mb-3">
+                <button type="submit" class="btn btn-primary"><i class="fa-solid fa-save me-2"></i>Save</button>
+            </div>
+        </form>
+    </div>
+</div>

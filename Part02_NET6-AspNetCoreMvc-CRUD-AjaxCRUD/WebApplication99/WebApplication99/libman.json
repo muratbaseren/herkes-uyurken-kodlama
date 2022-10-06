@@ -1,0 +1,18 @@
+{
+  "version": "1.0",
+  "defaultProvider": "cdnjs",
+  "libraries": [
+    {
+      "library": "font-awesome@6.2.0",
+      "destination": "wwwroot/lib/font-awesome/"
+    },
+    {
+      "library": "toastr.js@2.1.4",
+      "destination": "wwwroot/lib/toastrjs/"
+    },
+    {
+      "library": "jquery-ajax-unobtrusive@3.2.6",
+      "destination": "wwwroot/lib/jquery-ajax-unobtrusive/"
+    }
+  ]
+}

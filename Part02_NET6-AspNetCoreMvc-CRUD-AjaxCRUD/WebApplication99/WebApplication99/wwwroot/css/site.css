@@ -1,0 +1,30 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+.validation-summary-errors{
+    border:1px solid red;
+    background-color:red;
+    padding:10px;
+    border-radius:10px;
+}
+
+    .validation-summary-errors ul {
+        list-style-type: none;
+        color: #fff;
+    }
