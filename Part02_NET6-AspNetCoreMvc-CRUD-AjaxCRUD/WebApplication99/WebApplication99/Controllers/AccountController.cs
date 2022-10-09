@@ -188,16 +188,27 @@ namespace WebApplication99.Controllers
 
                 Stream stream = new FileStream($"wwwroot/uploads/{fileName}", FileMode.OpenOrCreate);
 
-                file.CopyTo(stream);
+				var size = file.Length;
 
-                stream.Close();
-                stream.Dispose();
+				if (size > 0 && size < 10000) //For Photo size validation
+				{
 
-                user.ProfileImageFileName = fileName;
-                _databaseContext.SaveChanges();
-
-                return RedirectToAction(nameof(Profile));
-            }
+					file.CopyTo(stream);
+					stream.Flush();
+					stream.Close();
+					stream.Dispose();
+					user.ProfileImageFileName = fileName;
+					_databaseContext.SaveChanges();
+					ProfileInfoLoader();
+					return RedirectToAction(nameof(Profile));
+				}
+				else
+				{
+					ViewData["size"] = "Photo upload failed";
+					ProfileInfoLoader();
+					return View("Profile");
+				}
+			}
 
             ProfileInfoLoader();
             return View("Profile");
