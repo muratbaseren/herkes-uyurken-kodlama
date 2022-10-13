@@ -81,4 +81,11 @@
             toastr["success"]("Şireniz değiştirilmiştir.", "Şifre Değişti!");
         </script>
     }
+
+    @if (ViewData["size"] == "Foto upload failed")
+	{
+		<script>
+			toastr["warning"]("Fotoğraf Boyutu Max Sınırların Dışındadır.", "Başarısız.")
+		</script>
+	}
 }
