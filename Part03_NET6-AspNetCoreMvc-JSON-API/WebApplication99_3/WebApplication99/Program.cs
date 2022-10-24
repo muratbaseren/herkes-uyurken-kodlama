@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
 using WebApplication99.Entities;
+using WebApplication99.Helpers;
 
 namespace WebApplication99
 {
@@ -31,6 +32,8 @@ namespace WebApplication99
                     opts.LogoutPath = "/Account/Logout";
                     opts.AccessDeniedPath = "/Home/AccessDenied";
                 });
+
+            builder.Services.AddScoped<IHasher, Hasher>();
 
             var app = builder.Build();
 

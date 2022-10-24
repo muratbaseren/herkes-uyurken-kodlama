@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using WebApplication99.Entities;
+using WebApplication99.Helpers;
 using WebApplication99.Models;
 
 namespace WebApplication99.Controllers
@@ -9,11 +10,13 @@ namespace WebApplication99.Controllers
     {
         private readonly DatabaseContext _databaseContext;
         private readonly IMapper _mapper;
+        private readonly IHasher _hasher;
 
-        public MemberController(DatabaseContext databaseContext, IMapper mapper)
+        public MemberController(DatabaseContext databaseContext, IMapper mapper, IHasher hasher)
         {
             _databaseContext = databaseContext;
             _mapper = mapper;
+            _hasher = hasher;
         }
 
         public IActionResult Index()
@@ -48,6 +51,7 @@ namespace WebApplication99.Controllers
                 }
 
                 User user = _mapper.Map<User>(model);
+                user.Password = _hasher.DoMD5HashedString(model.Password);
 
                 _databaseContext.Users.Add(user);
                 _databaseContext.SaveChanges();
