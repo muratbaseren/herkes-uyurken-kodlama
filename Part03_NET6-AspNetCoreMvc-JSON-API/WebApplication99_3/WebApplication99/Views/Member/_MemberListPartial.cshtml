@@ -1,0 +1,47 @@
+﻿@model List<UserModel>
+
+<table class="table table-hover table-sm">
+    <thead>
+        <tr>
+            <th>Fullname</th>
+            <th>Username</th>
+            <th>Locked</th>
+            <th>Role</th>
+            <th>Created At</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (UserModel user in Model)
+        {
+            <tr>
+                <td>@user.FullName</td>
+                <td>@user.Username</td>
+                <td>
+                    @if (user.Locked)
+                    {
+                        <i class="fa fa-check text-success"></i>
+                    }
+                    else
+                    {
+                        <i class="fa fa-times text-danger"></i>
+                    }
+                </td>
+                <td>@user.Role</td>
+                <td>@user.CreatedAt</td>
+                <td class="text-end">
+
+                    <a asp-action="EditUserPartial" asp-route-id="@user.Id" class="btn btn-info btn-sm text-white"
+                        data-bs-toggle="modal" data-bs-target="#modalEdit" data-ajax="true" data-ajax-method="get" data-ajax-update="#modalEditContent">
+                        <i class="fa fa-edit me-2"></i>Edit
+                    </a>
+
+                    <a asp-action="DeleteUser" asp-route-id="@user.Id"
+                   data-ajax-confirm="Are you sure want to delete this user : @user.Username ?"
+                   data-ajax="true" data-ajax-method="get" data-ajax-update="#panel"
+                   class="btn btn-danger btn-sm"><i class="fa fa-trash me-2"></i>Remove</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

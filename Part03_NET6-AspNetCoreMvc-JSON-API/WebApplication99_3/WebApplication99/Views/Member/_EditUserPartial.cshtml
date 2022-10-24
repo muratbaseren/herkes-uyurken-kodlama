@@ -1,0 +1,58 @@
+﻿@model EditUserModel
+
+<div class="modal-header">
+    <h1 class="modal-title fs-5">Edit User</h1>
+    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+</div>
+<div class="modal-body">
+    <form id="frmEditUser" asp-action="EditUser" method="post"
+          data-ajax="true" data-ajax-method="post" data-ajax-update="#modalEditContent">
+
+        <div asp-validation-summary="ModelOnly" class="text-danger small"></div>
+
+        <div class="form-group mb-3">
+            <label asp-for="FullName" class="form-label">Full Name</label>
+            <input asp-for="FullName" class="form-control" placeholder="john doe" />
+            <span asp-validation-for="FullName" class="text-danger small"></span>
+        </div>
+
+        <div class="form-group mb-3">
+            <label asp-for="Username" class="form-label">Username</label>
+            <input asp-for="Username" class="form-control" placeholder="johndoe" />
+            <span asp-validation-for="Username" class="text-danger small"></span>
+        </div>
+
+        <div class="form-group mb-3">
+            <label asp-for="Role" class="form-label">Role</label>
+            <select asp-for="Role" class="form-select">
+                <option value="">Please Select</option>
+                <option value="admin">Admin</option>
+                <option value="user">User</option>
+            </select>
+            <span asp-validation-for="Role" class="text-danger small"></span>
+        </div>
+
+        <div class="form-group mb-3">
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" asp-for="Locked">
+                <label class="form-check-label" asp-for="Locked">
+                    Locked
+                </label>
+            </div>
+        </div>
+        <input type="hidden" asp-for="Id" />
+    </form>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
+    <button type="submit" class="btn btn-primary btn-sm" form="frmEditUser"><i class="fa fa-save me-2"></i>Save</button>
+</div>
+
+@if (string.IsNullOrEmpty(Model.Done) == false)
+{
+    <script>
+        $("#modalEdit").modal("hide");
+        toastr.success('@Model.Done',"Success");
+        refresh.click();
+    </script>
+}
