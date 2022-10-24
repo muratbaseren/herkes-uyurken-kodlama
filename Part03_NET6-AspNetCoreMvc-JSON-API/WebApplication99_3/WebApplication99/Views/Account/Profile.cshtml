@@ -77,6 +77,7 @@
                 <textarea id="token" class="form-control" rows="5" readonly>@ViewContext.HttpContext.Request.Cookies[".WebApplication99.auth"]</textarea>
                 <p class="small">Note : Use Cookie Authentication<span class="badge bg-secondary ms-3 cursor-pointer" onclick="copyTo()">Copy to clipboard</span></p>
                 <p class="alert alert-info small">Headers &gt; Cookie &gt; .WebApplication99.auth=[token]</p>
+                <p class="alert alert-warning small">Please <a asp-controller="swagger" asp-action="Index" target="_blank">click</a> for api doc</p>
             </div>
         </div>
 
@@ -92,13 +93,13 @@
     }
 
     <script>
-        function copyTo(){
+        function copyTo() {
             var txt = document.getElementById("token");
             txt.select();
             navigator.clipboard.writeText(txt.value);
-            txt.setSelectionRange(0,0);
+            txt.setSelectionRange(0, 0);
 
-            toastr.success("Copied the token.","Copy");
+            toastr.success("Copied the token.", "Copy");
         }
     </script>
 }

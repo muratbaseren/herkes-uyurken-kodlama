@@ -10,7 +10,7 @@ using WebApplication99.Models;
 
 namespace WebApplication99.Controllers
 {
-    [Authorize]
+    [Authorize(AuthenticationSchemes = CookieAuthenticationDefaults.AuthenticationScheme)]
     public class AccountController : Controller
     {
         private readonly DatabaseContext _databaseContext;
@@ -170,7 +170,7 @@ namespace WebApplication99.Controllers
         }
 
         [HttpPost]
-        public IActionResult ProfileChangeImage([Required]IFormFile file)
+        public IActionResult ProfileChangeImage([Required] IFormFile file)
         {
             if (ModelState.IsValid)
             {
