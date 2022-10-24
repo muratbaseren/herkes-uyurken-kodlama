@@ -28,3 +28,7 @@ body {
         list-style-type: none;
         color: #fff;
     }
+
+.cursor-pointer{
+    cursor:pointer;
+}

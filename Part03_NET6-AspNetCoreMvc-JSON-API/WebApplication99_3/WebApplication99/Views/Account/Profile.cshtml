@@ -71,6 +71,15 @@
             </div>
         </form>
 
+        <div class="form-group mt-3">
+            <label class="form-label small">API Token<span class="badge bg-danger ms-2">required</span></label>
+            <div>
+                <textarea id="token" class="form-control" rows="5" readonly>@ViewContext.HttpContext.Request.Cookies[".WebApplication99.auth"]</textarea>
+                <p class="small">Note : Use Cookie Authentication<span class="badge bg-secondary ms-3 cursor-pointer" onclick="copyTo()">Copy to clipboard</span></p>
+                <p class="alert alert-info small">Headers &gt; Cookie &gt; .WebApplication99.auth=[token]</p>
+            </div>
+        </div>
+
     </div>
 </div>
 
@@ -81,4 +90,15 @@
             toastr["success"]("Şireniz değiştirilmiştir.", "Şifre Değişti!");
         </script>
     }
+
+    <script>
+        function copyTo(){
+            var txt = document.getElementById("token");
+            txt.select();
+            navigator.clipboard.writeText(txt.value);
+            txt.setSelectionRange(0,0);
+
+            toastr.success("Copied the token.","Copy");
+        }
+    </script>
 }
