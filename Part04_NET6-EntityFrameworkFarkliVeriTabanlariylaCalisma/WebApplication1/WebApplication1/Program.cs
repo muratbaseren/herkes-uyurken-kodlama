@@ -1,3 +1,4 @@
+using Microsoft.EntityFrameworkCore;
 using WebApplication1.Entities;
 
 namespace WebApplication1
@@ -12,7 +13,11 @@ namespace WebApplication1
             builder.Services.AddControllersWithViews();
 
             // TODO : Set database provider
-            //builder.Services.AddDbContext<DatabaseContext>();
+            builder.Services.AddDbContext<DatabaseContext>(opts =>
+            {
+                opts.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+                //opts.UseLazyLoadingProxies();
+            });
 
             var app = builder.Build();
 
