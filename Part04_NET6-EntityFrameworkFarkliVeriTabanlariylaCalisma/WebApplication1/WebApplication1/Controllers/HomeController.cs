@@ -19,6 +19,7 @@ namespace WebApplication1.Controllers
 
         public IActionResult Index()
         {
+            // TODO : Set database context
             List<Album> albums = new List<Album>();
 
             for (int i = 0; i < 10; i++)

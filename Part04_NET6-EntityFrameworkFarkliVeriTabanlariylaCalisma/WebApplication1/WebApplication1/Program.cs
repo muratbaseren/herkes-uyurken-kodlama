@@ -1,3 +1,5 @@
+using WebApplication1.Entities;
+
 namespace WebApplication1
 {
     public class Program
@@ -8,6 +10,9 @@ namespace WebApplication1
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+
+            // TODO : Set database provider
+            //builder.Services.AddDbContext<DatabaseContext>();
 
             var app = builder.Build();
 
