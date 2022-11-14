@@ -1,0 +1,36 @@
+﻿@using WebApplication1.Entities
+@model List<Album>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="row">
+    <div class="col">
+        <h1 class="display-4">Albums</h1>
+        <hr />
+    </div>
+</div>
+
+<div class="row">
+    <div class="col">
+        <table class="table table-sm table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (Album item in Model)
+                {
+                    <tr>
+                        <td>@item.Id</td>
+                        <td>@item.Name</td>
+                        <td>@item.Description</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

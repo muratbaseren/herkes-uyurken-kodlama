@@ -45,8 +45,8 @@ namespace WebApplication99
                     {
                         ValidateIssuer = false,
                         ValidateAudience = false,
-                        ValidateLifetime = true,
                         ValidateIssuerSigningKey = false,
+                        ValidateLifetime = true,
                         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration.GetValue<string>("AppSettings:Secret")))
                     };
                 });
