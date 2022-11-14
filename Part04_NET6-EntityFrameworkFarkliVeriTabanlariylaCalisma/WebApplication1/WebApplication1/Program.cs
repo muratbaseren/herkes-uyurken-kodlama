@@ -1,3 +1,4 @@
+using Microsoft.EntityFrameworkCore;
 using WebApplication1.Entities;
 
 namespace WebApplication1
@@ -12,7 +13,10 @@ namespace WebApplication1
             builder.Services.AddControllersWithViews();
 
             // TODO : Set database provider
-            //builder.Services.AddDbContext<DatabaseContext>();
+            builder.Services.AddDbContext<DatabaseContext>(opts =>
+            {
+                opts.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection"));
+            });
 
             var app = builder.Build();
 
